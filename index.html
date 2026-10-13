@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northlane Driving School</title>
+  <meta name="description" content="Calm, patient driving lessons. Dual-control cars, flexible hours, test-ready in weeks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%230a0f1a%22/%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2210%22 fill=%22none%22 stroke=%22%23f3efe6%22 stroke-width=%222%22/%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%223.5%22 fill=%22%23ffc531%22/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- intro: a film leader counts down, then the bars open like a projector gate -->
+  <div class="loader" id="loader">
+    <div class="loader__bar loader__bar--t"></div>
+    <div class="loader__bar loader__bar--b"></div>
+    <div class="leader">
+      <svg class="leader__ring" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="74"/></svg>
+      <div class="leader__sweep"></div>
+      <span class="leader__cross leader__cross--h"></span><span class="leader__cross leader__cross--v"></span>
+      <b class="leader__num" id="leaderNum">3</b>
+    </div>
+    <p class="loader__title"><span>Northlane</span> <em>presents</em></p>
+    <div class="loader__count"><span id="loadNum">0</span>%</div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"><em class="cursor__label"></em></span></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <div class="letterbox" aria-hidden="true"><span></span><span></span></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" data-magnetic>
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 4v8M16 20v8M4 16h8M20 16h8" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="3.5" fill="var(--signal)"/></svg>
+      <span>Northlane</span>
+    </a>
+    <nav class="nav__links">
+      <a href="#lesson">How it works</a>
+      <a href="#town">The route</a>
+      <a href="#features">Why us</a>
+      <a href="#courses">Courses</a>
+      <a href="#tutors">Team</a>
+      <a href="#packages">Packages</a>
+      <a href="#faq">FAQ</a>
+      <span class="nav__ink"></span>
+    </nav>
+    <a class="btn btn--signal nav__cta" href="#book" data-magnetic><span>Book a lesson</span></a>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__media">
+        <div class="hero__clips-cam">
+        <video class="hero__clip is-on" src="assets/video/33327.mp4" poster="assets/img/v33327.jpg" muted loop playsinline autoplay></video>
+        <video class="hero__clip" src="assets/video/13976.mp4" poster="assets/img/v13976.jpg" muted loop playsinline preload="none"></video>
+        <video class="hero__clip" src="assets/video/52454.mp4" poster="assets/img/v52454.jpg" muted loop playsinline preload="none"></video>
+        <video class="hero__clip" src="assets/video/1615.mp4" poster="assets/img/v1615.jpg" muted loop playsinline preload="none"></video>
+        <video class="hero__clip" src="assets/video/44655.mp4" poster="assets/img/v44655.jpg" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="hero__shade"></div>
+      </div>
+      <div class="hud" aria-hidden="true">
+        <i class="hud__c hud__c--tl"></i><i class="hud__c hud__c--tr"></i><i class="hud__c hud__c--bl"></i><i class="hud__c hud__c--br"></i>
+        <span class="hud__rec"><b></b>REC</span>
+        <span class="hud__tc" id="tc">00:00:00:00</span>
+        <span class="hud__spec">4K · 24 FPS · ISO 400 · f/2.8</span>
+        <span class="hud__focus"></span>
+      </div>
+
+      <div class="hero__meta">
+        <span>(Vol. 15)</span>
+        <span>Driving school<br>since 2011</span>
+        <span>Mon to Sun<br>07:00 to 21:00</span>
+        <span>4.9 ★ from<br>1,280 reviews</span>
+      </div>
+
+      <a class="badge" href="#book" data-magnetic aria-label="Book your first lesson">
+        <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="badgeCircle" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs><text><textPath href="#badgeCircle">First lesson $39 ✦ Book now ✦ First lesson $39 ✦ Book now ✦ </textPath></text></svg>
+        <span class="badge__core">↗</span>
+      </a>
+
+      <div class="hero__inner">
+        <p class="eyebrow hero__eyebrow"><span class="dot"></span> Now booking the autumn intake</p>
+        <h1 class="hero__title" data-split>
+          Learn to <span class="tpill"><video src="assets/video/52454.mp4" muted loop playsinline autoplay></video></span> drive<br>with <em>calm hands</em><br>and a clear head.
+        </h1>
+        <div class="hero__row">
+          <p class="hero__lede">Patient instructors, dual-control cars and a lesson plan built around you. Most of our students pass first time.</p>
+          <div class="hero__btns">
+            <a class="btn btn--signal" href="#book" data-magnetic><span>Book your first lesson</span></a>
+            <a class="btn btn--ghost" href="#lesson" data-magnetic><span>See how it works</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__strip">
+        <div class="hero__count"><b id="heroIdx">01</b> / 05</div>
+        <ol class="hero__steps">
+          <li class="is-on">Hands on the wheel</li>
+          <li>Highway</li>
+          <li>Golden hour</li>
+          <li>Roundabouts</li>
+          <li>Country lanes</li>
+        </ol>
+        <div class="hero__bar"><span></span></div>
+      </div>
+      <a class="hero__scroll" href="#lesson"><span>Scroll</span><i></i></a>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Patient instructors</span><b>✦</b><span>Dual-control cars</span><b>✦</b><span>Lessons 7 days a week</span><b>✦</b><span>Pick-up from home</span><b>✦</b><span>Test-ready in 8 weeks</span><b>✦</b>
+        <span>Patient instructors</span><b>✦</b><span>Dual-control cars</span><b>✦</b><span>Lessons 7 days a week</span><b>✦</b><span>Pick-up from home</span><b>✦</b><span>Test-ready in 8 weeks</span><b>✦</b>
+      </div>
+    </div>
+
+    <!-- STATEMENT -->
+    <section class="statement" id="statement">
+      <p class="eyebrow">Our promise</p>
+      <h2 class="statement__text">
+        <span class="w">Nobody</span> <span class="w">is</span> <span class="w">born</span> <span class="w">a</span> <span class="w">driver.</span>
+        <span class="pill"><video src="assets/video/36155.mp4" muted loop playsinline preload="none"></video></span>
+        <span class="w">We</span> <span class="w">teach</span> <span class="w">the</span> <span class="w">nervous,</span> <span class="w">the</span> <span class="w">busy</span> <span class="w">and</span> <span class="w">the</span> <span class="w">curious</span>
+        <span class="pill"><video src="assets/video/24723.mp4" muted loop playsinline preload="none"></video></span>
+        <span class="w">one</span> <span class="w">calm</span> <span class="pill"><video src="assets/video/28116.mp4" muted loop playsinline preload="none"></video></span> <span class="w">mile</span> <span class="w">at</span> <span class="w">a</span> <span class="w">time,</span> <span class="w">until</span> <span class="w">the</span> <span class="w">road</span> <span class="w">feels</span> <span class="w hl">like home.</span>
+        <svg class="statement__stroke" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M5 28 C 120 8, 260 36, 380 18 S 560 14, 595 22"/></svg>
+      </h2>
+    </section>
+
+    <!-- CHAPTER I -->
+    <section class="chapter" aria-label="Chapter I: The first lesson">
+      <div class="chapter__pin">
+        <div class="chapter__media"><video src="assets/video/36155.mp4" poster="assets/img/v36155.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="chapter__leak"></div>
+        <p class="chapter__no">Chapter I</p>
+        <h2 class="chapter__title">The first lesson</h2>
+        <p class="chapter__sub">In which a nervous beginner meets a very calm instructor.</p>
+      </div>
+    </section>
+
+    <!-- HOW A LESSON WORKS (pinned horizontal) -->
+    <section class="lesson" id="lesson">
+      <div class="lesson__pin">
+        <div class="lesson__head">
+          <p class="eyebrow">How a lesson works</p>
+          <h2 class="h2">Four steps.<br><em>Zero panic.</em></h2>
+          <div class="lesson__meter"><span></span></div>
+        </div>
+        <div class="lesson__track">
+          <article class="step">
+            <div class="step__media"><video src="assets/video/36155.mp4" poster="assets/img/v36155.jpg" muted loop playsinline preload="none"></video></div>
+            <div class="step__body"><span class="step__no">01</span><h3>We pull up at your door</h3><p>Book online in a minute. Your instructor collects you from home, school or work.</p></div>
+          </article>
+          <article class="step">
+            <div class="step__media"><video src="assets/video/33739.mp4" poster="assets/img/v33739.jpg" muted loop playsinline preload="none"></video></div>
+            <div class="step__body"><span class="step__no">02</span><h3>Meet your instructor</h3><p>Ten quiet minutes in the car park: mirrors, seat, controls. No rush.</p></div>
+          </article>
+          <article class="step">
+            <div class="step__media"><video src="assets/video/33737.mp4" poster="assets/img/v33737.jpg" muted loop playsinline preload="none"></video></div>
+            <div class="step__body"><span class="step__no">03</span><h3>Drive at your pace</h3><p>Quiet streets first, then busier roads. Dual controls mean you are always safe.</p></div>
+          </article>
+          <article class="step">
+            <div class="step__media"><video src="assets/video/72.mp4" poster="assets/img/v72.jpg" muted loop playsinline preload="none"></video></div>
+            <div class="step__body"><span class="step__no">04</span><h3>Review &amp; next goal</h3><p>Every lesson ends with notes on your phone and one clear thing to work on.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER II -->
+    <section class="chapter" aria-label="Chapter II: The route">
+      <div class="chapter__pin">
+        <div class="chapter__media"><video src="assets/video/1615.mp4" poster="assets/img/v1615.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="chapter__leak"></div>
+        <p class="chapter__no">Chapter II</p>
+        <h2 class="chapter__title">The route</h2>
+        <p class="chapter__sub">Out of the lot, once around town, and home again.</p>
+      </div>
+    </section>
+
+    <!-- 3D TOWN -->
+    <section class="town" id="town">
+      <div class="town__pin">
+        <canvas id="townCanvas"></canvas>
+        <div class="town__tilt town__tilt--top"></div><div class="town__tilt town__tilt--bot"></div>
+        <div class="town__vignette"></div>
+        <div class="town__hud">
+          <p class="eyebrow">The first-lesson route</p>
+          <div class="town__captions">
+            <h3 class="town__cap is-on"><span>01</span>Leave the school lot</h3>
+            <h3 class="town__cap"><span>02</span>Mirror, signal, turn</h3>
+            <h3 class="town__cap"><span>03</span>Your first roundabout</h3>
+            <h3 class="town__cap"><span>04</span>Stop sign, full stop</h3>
+            <h3 class="town__cap"><span>05</span>Park back home. Done.</h3>
+          </div>
+          <div class="town__speed"><b id="speedNum">0</b><small>km/h</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE CAR (3D) -->
+    <section class="garage" id="car">
+      <div class="garage__pin">
+        <canvas id="carCanvas" aria-label="A 3D model of the yellow Northlane learner car. Drag to turn it."></canvas>
+        <div class="garage__head">
+          <p class="eyebrow">The car</p>
+          <h2 class="h2">Meet the<br><em>yellow one.</em></h2>
+        </div>
+        <p class="garage__hint">Drag to turn <span>↻</span></p>
+        <div class="hs" data-hs="sign"><i></i><div><b>Roof sign</b><span>Other drivers give you room</span></div></div>
+        <div class="hs" data-hs="brake"><i></i><div><b>Dual brake</b><span>Your instructor's own pedal</span></div></div>
+        <div class="hs" data-hs="cam"><i></i><div><b>360° cameras</b><span>Parking with nothing to hide</span></div></div>
+        <div class="hs" data-hs="box"><i></i><div><b>Auto or manual</b><span>Same car, your choice</span></div></div>
+        <dl class="garage__specs">
+          <div><dt>Safety</dt><dd>5★ NCAP</dd></div>
+          <div><dt>Gearbox</dt><dd>Auto / manual</dd></div>
+          <div><dt>Service</dt><dd>Every 5,000 km</dd></div>
+          <div><dt>Fleet</dt><dd>14 cars</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+      <div class="section-head">
+        <p class="eyebrow">Why Northlane</p>
+        <h2 class="h2">Everything a nervous<br>new driver <em>needs.</em></h2>
+      </div>
+      <div class="bento">
+        <article class="feat feat--a" data-cursor="Play">
+          <video src="assets/video/13976.mp4" poster="assets/img/v13976.jpg" muted loop playsinline preload="none"></video>
+          <div class="feat__body"><span class="tag">Safety</span><h3>Dual-control cars</h3><p>Your instructor has their own brake. Mistakes stay small.</p></div>
+        </article>
+        <article class="feat feat--b" data-cursor="Play">
+          <video src="assets/video/56.mp4" poster="assets/img/v56.jpg" muted loop playsinline preload="none"></video>
+          <div class="feat__body"><span class="tag">Routes</span><h3>Real test routes</h3></div>
+        </article>
+        <article class="tile tile--signal">
+          <p class="tile__big">94<em>%</em></p>
+          <p>of our students pass their test the first time. The national average is 47%.</p>
+        </article>
+        <article class="feat feat--d" data-cursor="Play">
+          <video src="assets/video/49878.mp4" poster="assets/img/v49878.jpg" muted loop playsinline preload="none"></video>
+          <div class="feat__body"><span class="tag">Night</span><h3>Night driving</h3><p>Headlights, glare and dark country lanes, with someone calm beside you.</p></div>
+        </article>
+        <article class="feat feat--e" data-cursor="Play">
+          <video src="assets/video/2675.mp4" poster="assets/img/v2675.jpg" muted loop playsinline preload="none"></video>
+          <div class="feat__body"><span class="tag">Highway</span><h3>Motorway confidence</h3></div>
+        </article>
+        <article class="tile tile--outline">
+          <p class="tile__kicker">Automatic or manual</p>
+          <p class="tile__serif">“Same calm instructor, whatever the gearbox.”</p>
+          <a class="tile__link" href="#courses">See all courses →</a>
+        </article>
+        <article class="feat feat--g" data-cursor="Play">
+          <video src="assets/video/41540.mp4" poster="assets/img/v41540.jpg" muted loop playsinline preload="none"></video>
+          <div class="feat__body"><span class="tag">City</span><h3>Busy city streets</h3></div>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- COURSES -->
+    <section class="courses" id="courses">
+      <div class="section-head section-head--split">
+        <p class="eyebrow">Courses</p>
+        <h2 class="h2">Seven ways<br><em>to get going.</em></h2>
+        <p class="section-head__aside"><span class="only-hover">Hover a course to see it. </span>Every course comes with pick-up, dual controls and notes in the app.</p>
+      </div>
+      <div class="courses__list">
+        <a class="course" href="#book" data-video="assets/video/33737.mp4" data-cursor="Book">
+          <span class="course__no">01</span>
+          <span class="course__name">Beginner</span>
+          <span class="course__desc">From zero to first drive</span>
+          <span class="course__time">10–30 h</span>
+          <span class="course__arrow">→</span>
+          <video class="course__thumb" src="assets/video/33737.mp4" muted loop playsinline preload="none"></video>
+        </a>
+        <a class="course" href="#book" data-video="assets/video/72.mp4" data-cursor="Book">
+          <span class="course__no">02</span>
+          <span class="course__name">Automatic</span>
+          <span class="course__desc">Fewer controls, faster to learn</span>
+          <span class="course__time">15–25 h</span>
+          <span class="course__arrow">→</span>
+          <video class="course__thumb" src="assets/video/72.mp4" muted loop playsinline preload="none"></video>
+        </a>
+        <a class="course" href="#book" data-video="assets/video/24723.mp4" data-cursor="Book">
+          <span class="course__no">03</span>
+          <span class="course__name">Manual</span>
+          <span class="course__desc">Clutch control without the stalls</span>
+          <span class="course__time">20–35 h</span>
+          <span class="course__arrow">→</span>
+          <video class="course__thumb" src="assets/video/24723.mp4" muted loop playsinline preload="none"></video>
+        </a>
+        <a class="course" href="#book" data-video="assets/video/13976.mp4" data-cursor="Book">
+          <span class="course__no">04</span>
+          <span class="course__name">Highway</span>
+          <span class="course__desc">Merging, lanes and speed</span>
+          <span class="course__time">2 × 90 min</span>
+          <span class="course__arrow">→</span>
+          <video class="course__thumb" src="assets/video/13976.mp4" muted loop playsinline preload="none"></video>
+        </a>
+        <a class="course" href="#book" data-video="assets/video/49878.mp4" data-cursor="Book">
+          <span class="course__no">05</span>
+          <span class="course__name">Night</span>
+          <span class="course__desc">Glare, dark lanes, judging distance</span>
+          <span class="course__time">2 × 90 min</span>
+          <span class="course__arrow">→</span>
+          <video class="course__thumb" src="assets/video/49878.mp4" muted loop playsinline preload="none"></video>
+        </a>
+        <a class="course" href="#book" data-video="assets/video/33739.mp4" data-cursor="Book">
+          <span class="course__no">06</span>
+          <span class="course__name">Test prep</span>
+          <span class="course__desc">Mock tests on real routes</span>
+          <span class="course__time">4 × 90 min</span>
+          <span class="course__arrow">→</span>
+          <video class="course__thumb" src="assets/video/33739.mp4" muted loop playsinline preload="none"></video>
+        </a>
+        <a class="course" href="#book" data-video="assets/video/6332.mp4" data-cursor="Book">
+          <span class="course__no">07</span>
+          <span class="course__name">Refresher</span>
+          <span class="course__desc">Back behind the wheel after years away</span>
+          <span class="course__time">From 3 h</span>
+          <span class="course__arrow">→</span>
+          <video class="course__thumb" src="assets/video/6332.mp4" muted loop playsinline preload="none"></video>
+        </a>
+      </div>
+      <div class="courses__float" aria-hidden="true"><video muted loop playsinline></video></div>
+    </section>
+
+    <!-- INSTRUCTORS -->
+    <section class="tutors" id="tutors">
+      <div class="section-head section-head--split">
+        <p class="eyebrow">Instructors</p>
+        <h2 class="h2">Calm people,<br><em>on purpose.</em></h2>
+        <p class="section-head__aside">We hire for patience first. Every instructor is certified, background-checked and trained in teaching nervous drivers.</p>
+      </div>
+      <div class="tutors__grid">
+        <article class="tutor" data-cursor="Hello">
+          <div class="tutor__media"><video src="assets/video/4535.mp4" poster="assets/img/v4535.jpg" muted loop playsinline preload="none"></video><span class="tutor__badge">12 years</span></div>
+          <h3 class="tutor__name">Daniel <em>Okafor</em></h3>
+          <p class="tutor__role">Head instructor</p>
+          <dl class="tutor__facts"><div><dt>Speaks</dt><dd>English · French</dd></div><div><dt>Best at</dt><dd>Nervous beginners</dd></div></dl>
+        </article>
+        <article class="tutor" data-cursor="Hello">
+          <div class="tutor__media"><video src="assets/video/4859.mp4" poster="assets/img/v4859.jpg" muted loop playsinline preload="none"></video><span class="tutor__badge">8 years</span></div>
+          <h3 class="tutor__name">Maria <em>Lindqvist</em></h3>
+          <p class="tutor__role">Instructor</p>
+          <dl class="tutor__facts"><div><dt>Speaks</dt><dd>English · Swedish</dd></div><div><dt>Best at</dt><dd>Highway & night</dd></div></dl>
+        </article>
+        <article class="tutor" data-cursor="Hello">
+          <div class="tutor__media"><video src="assets/video/33210.mp4" poster="assets/img/v33210.jpg" muted loop playsinline preload="none"></video><span class="tutor__badge">31 years</span></div>
+          <h3 class="tutor__name">Walter <em>Brenner</em></h3>
+          <p class="tutor__role">Senior instructor</p>
+          <dl class="tutor__facts"><div><dt>Speaks</dt><dd>English · German</dd></div><div><dt>Best at</dt><dd>Refresher lessons</dd></div></dl>
+        </article>
+        <article class="tutor" data-cursor="Hello">
+          <div class="tutor__media"><video src="assets/video/24633.mp4" poster="assets/img/v24633.jpg" muted loop playsinline preload="none"></video><span class="tutor__badge">5 years</span></div>
+          <h3 class="tutor__name">Tom <em>Reyes</em></h3>
+          <p class="tutor__role">Instructor</p>
+          <dl class="tutor__facts"><div><dt>Speaks</dt><dd>English · Spanish</dd></div><div><dt>Best at</dt><dd>Test prep</dd></div></dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- THE APP -->
+    <section class="app" id="app">
+      <div class="app__copy">
+        <p class="eyebrow">The Northlane app</p>
+        <h2 class="h2">Every lesson,<br><em>in your pocket.</em></h2>
+        <p class="app__lede">After each drive your instructor logs what went well and what is next. You see it in seconds. Parents can follow along too.</p>
+        <div class="app__tabs" role="tablist">
+          <button class="is-on" data-role="student" role="tab">Student</button>
+          <button data-role="parent" role="tab">Parent</button>
+          <button data-role="instructor" role="tab">Instructor</button>
+          <span class="app__tabs-ink"></span>
+        </div>
+        <ul class="app__points">
+          <li><b>Skills tracker</b> 24 test skills, each signed off by your instructor</li>
+          <li><b>One-tap booking</b> Move or cancel up to 24 h before, free</li>
+          <li><b>Hours log</b> Every minute on the road, ready for your test</li>
+        </ul>
+      </div>
+      <div class="app__stage">
+        <div class="app__float app__float--a"><i>✓</i><div><b>Lesson confirmed</b><span>Thu · 16:30 · pick-up at home</span></div></div>
+        <div class="app__float app__float--b"><i class="y">★</i><div><b>Parallel parking</b><span>Signed off by Daniel</span></div></div>
+        <div class="phone" id="phone">
+          <div class="phone__screen">
+            <div class="phone__notch"></div>
+            <div class="screen is-on" data-screen="student">
+              <p class="screen__hi">Good evening,</p>
+              <p class="screen__name">Sofia</p>
+              <div class="ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50"/><circle class="ring__val" cx="60" cy="60" r="50"/></svg><div><b>72</b><span>% test-ready</span></div></div>
+              <div class="screen__card"><small>Next lesson</small><b>Thu 16:30 · Roundabouts</b><span>with Daniel · 90 min</span></div>
+              <div class="bars">
+                <p><span>Junctions</span><i style="--w:.9"></i></p>
+                <p><span>Roundabouts</span><i style="--w:.64"></i></p>
+                <p><span>Parking</span><i style="--w:.78"></i></p>
+                <p><span>Highway</span><i style="--w:.4"></i></p>
+              </div>
+            </div>
+            <div class="screen" data-screen="parent">
+              <p class="screen__hi">Following</p>
+              <p class="screen__name">Sofia's lessons</p>
+              <div class="screen__card screen__card--live"><small><span class="dot"></span> Live now</small><b>On the road with Daniel</b><span>Started 16:32 · ends 18:02</span></div>
+              <div class="screen__list">
+                <p><b>14.5 h</b><span>on the road</span></p>
+                <p><b>11</b><span>lessons done</span></p>
+                <p><b>$310</b><span>credit left</span></p>
+              </div>
+              <div class="screen__note">“Calm at junctions today. Next: mirror checks on roundabouts.” <span>Daniel</span></div>
+            </div>
+            <div class="screen" data-screen="instructor">
+              <p class="screen__hi">Today</p>
+              <p class="screen__name">4 lessons</p>
+              <div class="screen__slots">
+                <p><b>08:00</b><span>Marcus · Highway</span></p>
+                <p class="is-now"><b>10:30</b><span>Helen · Mock test</span></p>
+                <p><b>14:00</b><span>Jay · Parking</span></p>
+                <p><b>16:30</b><span>Sofia · Roundabouts</span></p>
+              </div>
+              <div class="screen__card"><small>Sign off a skill</small><b>Helen · Reverse park</b><span>Tap to sign ✍</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="stat"><b data-count="94">0</b><span>%</span><p>first-time pass rate</p></div>
+      <div class="stat"><b data-count="4200">0</b><span>+</span><p>students on the road</p></div>
+      <div class="stat"><b data-count="18">0</b><p>certified instructors</p></div>
+      <div class="stat"><b data-count="4.9" data-dec="1">0</b><span>★</span><p>average review</p></div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+      <div class="section-head section-head--split">
+        <p class="eyebrow">On the road</p>
+        <h2 class="h2">A week at<br><em>Northlane.</em></h2>
+        <p class="section-head__aside">Mountain passes, city nights, the first rainy drive and the day the keys are yours. Scroll faster and the reel speeds up.</p>
+      </div>
+      <div class="reel reel--a"><div class="reel__track"><figure class="g"><img src="assets/photo/p1.jpg" alt="Woman with her arm out of a car window on a mountain road" loading="lazy" decoding="async"></figure><figure class="g g--wide"><video src="assets/video/33707.mp4" poster="assets/img/v33707.jpg" muted loop playsinline preload="none"></video></figure><figure class="g"><img src="assets/photo/p8.jpg" alt="Car on a mountain road" loading="lazy" decoding="async"></figure><figure class="g g--tall"><img src="assets/photo/p2.jpg" alt="Hands on a steering wheel" loading="lazy" decoding="async"></figure><figure class="g"><video src="assets/video/42034.mp4" poster="assets/img/v42034.jpg" muted loop playsinline preload="none"></video></figure><figure class="g g--wide"><img src="assets/photo/p13.jpg" alt="Sunset in a side mirror" loading="lazy" decoding="async"></figure><figure class="g"><video src="assets/video/13957.mp4" poster="assets/img/v13957.jpg" muted loop playsinline preload="none"></video></figure><figure class="g"><img src="assets/photo/p5.jpg" alt="Empty autumn road" loading="lazy" decoding="async"></figure><figure class="g g--tall"><img src="assets/photo/p10.jpg" alt="Driver reflected in a side mirror" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g"><img src="assets/photo/p1.jpg" alt="Woman with her arm out of a car window on a mountain road" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g g--wide"><video src="assets/video/33707.mp4" poster="assets/img/v33707.jpg" muted loop playsinline preload="none"></video></figure><figure aria-hidden="true" class="g"><img src="assets/photo/p8.jpg" alt="Car on a mountain road" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g g--tall"><img src="assets/photo/p2.jpg" alt="Hands on a steering wheel" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g"><video src="assets/video/42034.mp4" poster="assets/img/v42034.jpg" muted loop playsinline preload="none"></video></figure><figure aria-hidden="true" class="g g--wide"><img src="assets/photo/p13.jpg" alt="Sunset in a side mirror" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g"><video src="assets/video/13957.mp4" poster="assets/img/v13957.jpg" muted loop playsinline preload="none"></video></figure><figure aria-hidden="true" class="g"><img src="assets/photo/p5.jpg" alt="Empty autumn road" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g g--tall"><img src="assets/photo/p10.jpg" alt="Driver reflected in a side mirror" loading="lazy" decoding="async"></figure></div></div>
+      <div class="reel reel--b"><div class="reel__track"><figure class="g"><video src="assets/video/16380.mp4" poster="assets/img/v16380.jpg" muted loop playsinline preload="none"></video></figure><figure class="g g--wide"><img src="assets/photo/p12.jpg" alt="Mountains seen through a windscreen" loading="lazy" decoding="async"></figure><figure class="g"><img src="assets/photo/p4.jpg" alt="Woman driving a classic car" loading="lazy" decoding="async"></figure><figure class="g g--tall"><video src="assets/video/39825.mp4" poster="assets/img/v39825.jpg" muted loop playsinline preload="none"></video></figure><figure class="g"><img src="assets/photo/p9.jpg" alt="Car on a road toward a glacier" loading="lazy" decoding="async"></figure><figure class="g g--wide"><video src="assets/video/3316.mp4" poster="assets/img/v3316.jpg" muted loop playsinline preload="none"></video></figure><figure class="g"><img src="assets/photo/p11.jpg" alt="Car interior at sunset" loading="lazy" decoding="async"></figure><figure class="g"><img src="assets/photo/p15.jpg" alt="Hands on a steering wheel" loading="lazy" decoding="async"></figure><figure class="g g--tall"><video src="assets/video/50992.mp4" poster="assets/img/v50992.jpg" muted loop playsinline preload="none"></video></figure><figure class="g"><img src="assets/photo/p16.jpg" alt="Driver on a forest road" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g"><video src="assets/video/16380.mp4" poster="assets/img/v16380.jpg" muted loop playsinline preload="none"></video></figure><figure aria-hidden="true" class="g g--wide"><img src="assets/photo/p12.jpg" alt="Mountains seen through a windscreen" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g"><img src="assets/photo/p4.jpg" alt="Woman driving a classic car" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g g--tall"><video src="assets/video/39825.mp4" poster="assets/img/v39825.jpg" muted loop playsinline preload="none"></video></figure><figure aria-hidden="true" class="g"><img src="assets/photo/p9.jpg" alt="Car on a road toward a glacier" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g g--wide"><video src="assets/video/3316.mp4" poster="assets/img/v3316.jpg" muted loop playsinline preload="none"></video></figure><figure aria-hidden="true" class="g"><img src="assets/photo/p11.jpg" alt="Car interior at sunset" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g"><img src="assets/photo/p15.jpg" alt="Hands on a steering wheel" loading="lazy" decoding="async"></figure><figure aria-hidden="true" class="g g--tall"><video src="assets/video/50992.mp4" poster="assets/img/v50992.jpg" muted loop playsinline preload="none"></video></figure><figure aria-hidden="true" class="g"><img src="assets/photo/p16.jpg" alt="Driver on a forest road" loading="lazy" decoding="async"></figure></div></div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section class="packages" id="packages">
+      <div class="section-head">
+        <p class="eyebrow">Packages</p>
+        <h2 class="h2">Pick a pace.<br><em>Change it any time.</em></h2>
+      </div>
+      <div class="packages__grid">
+        <article class="pack" data-tilt>
+          <div class="pack__glare"></div>
+          <figure class="pack__img"><img src="assets/photo/p15.jpg" alt="Hands on a steering wheel" loading="lazy" decoding="async"></figure>
+          <p class="pack__name">Starter</p>
+          <p class="pack__price"><sup>$</sup>249</p>
+          <p class="pack__meta">5 lessons · 60 min</p>
+          <ul><li>Pick-up from home</li><li>Car park basics</li><li>Quiet-street driving</li><li>Progress notes</li></ul>
+          <a class="btn btn--line" href="#book" data-magnetic><span>Choose Starter</span></a>
+        </article>
+        <article class="pack pack--hot" data-tilt>
+          <div class="pack__glare"></div>
+          <p class="pack__badge">Most popular</p>
+          <figure class="pack__img"><img src="assets/photo/p8.jpg" alt="Car on a mountain road" loading="lazy" decoding="async"></figure>
+          <p class="pack__name">Confident</p>
+          <p class="pack__price"><sup>$</sup>590</p>
+          <p class="pack__meta">12 lessons · 90 min</p>
+          <ul><li>Everything in Starter</li><li>Roundabouts &amp; highways</li><li>Night drive session</li><li>Two mock tests</li></ul>
+          <a class="btn btn--signal" href="#book" data-magnetic><span>Choose Confident</span></a>
+        </article>
+        <article class="pack" data-tilt>
+          <div class="pack__glare"></div>
+          <figure class="pack__img"><img src="assets/photo/p13.jpg" alt="Sunset in a side mirror" loading="lazy" decoding="async"></figure>
+          <p class="pack__name">Test-ready</p>
+          <p class="pack__price"><sup>$</sup>890</p>
+          <p class="pack__meta">20 lessons · 90 min</p>
+          <ul><li>Everything in Confident</li><li>Real test routes</li><li>Car for test day</li><li>Free retake lesson</li></ul>
+          <a class="btn btn--line" href="#book" data-magnetic><span>Choose Test-ready</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- STUDENTS -->
+    <section class="students">
+      <div class="section-head">
+        <p class="eyebrow">Students</p>
+        <h2 class="h2">They were nervous too.</h2>
+      </div>
+      <div class="students__rail" id="rail">
+        <figure class="quote" data-cursor="Drag">
+          <video style="object-position: 80% 50%" src="assets/video/33737.mp4" poster="assets/img/v33737.jpg" muted loop playsinline preload="none"></video>
+          <figcaption><span class="stars" aria-label="5 stars">★★★★★</span><p>“At 54 I thought I'd left it too late. Passed first time, and I loved every lesson.”</p><span>Helen · passed March</span></figcaption>
+        </figure>
+        <figure class="quote" data-cursor="Drag">
+          <video src="assets/video/43830.mp4" poster="assets/img/v43830.jpg" muted loop playsinline preload="none"></video>
+          <figcaption><span class="stars" aria-label="5 stars">★★★★★</span><p>“My instructor never raised his voice once. I drive to work every day now.”</p><span>Sofia · passed June</span></figcaption>
+        </figure>
+        <figure class="quote" data-cursor="Drag">
+          <video src="assets/video/33435.mp4" poster="assets/img/v33435.jpg" muted loop playsinline preload="none"></video>
+          <figcaption><span class="stars" aria-label="5 stars">★★★★★</span><p>“The motorway lesson took away all my fear. Best money I've spent.”</p><span>Marcus · passed August</span></figcaption>
+        </figure>
+        <figure class="quote" data-cursor="Drag">
+          <video src="assets/video/43834.mp4" poster="assets/img/v43834.jpg" muted loop playsinline preload="none"></video>
+          <figcaption><span class="stars" aria-label="5 stars">★★★★★</span><p>“Booked on my phone, picked up from my door, passed in nine weeks.”</p><span>Nina · passed September</span></figcaption>
+        </figure>
+        <figure class="quote" data-cursor="Drag">
+          <video src="assets/video/49028.mp4" poster="assets/img/v49028.jpg" muted loop playsinline preload="none"></video>
+          <figcaption><span class="stars" aria-label="5 stars">★★★★★</span><p>“Opened my result in the car park and screamed. Thank you, Daniel!”</p><span>Jay · passed December</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="section-head">
+        <p class="eyebrow">Questions</p>
+        <h2 class="h2">Good to know.</h2>
+        <figure class="faq__media"><video src="assets/video/33707.mp4" poster="assets/img/v33707.jpg" muted loop playsinline preload="none"></video><figcaption>Licence day. Helen, 54, with her first car keys.</figcaption></figure>
+      </div>
+      <div class="faq__list">
+        <details><summary>I have never driven before. Is that OK?<i></i></summary><p>That is how most of our students start. Your first lesson happens in a quiet car park and you only move on when you feel ready.</p></details>
+        <details><summary>Do you pick me up?<i></i></summary><p>Yes. We pick you up and drop you off at home, school or work anywhere in our area, at no extra cost.</p></details>
+        <details><summary>Manual or automatic?<i></i></summary><p>Both. Automatic is usually quicker to learn; manual gives you a licence for both kinds of car.</p></details>
+        <details><summary>Can I change or cancel a lesson?<i></i></summary><p>Move or cancel any lesson up to 24 hours before, free, from your phone.</p></details>
+        <details><summary>How many lessons will I need?<i></i></summary><p>Most beginners need 20 to 30 hours. After your first lesson your instructor will give you an honest estimate.</p></details>
+      </div>
+    </section>
+
+    <!-- CHAPTER III -->
+    <section class="chapter" aria-label="Chapter III: Licence day">
+      <div class="chapter__pin">
+        <div class="chapter__media"><video src="assets/video/33707.mp4" poster="assets/img/v33707.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="chapter__leak"></div>
+        <p class="chapter__no">Chapter III</p>
+        <h2 class="chapter__title">Licence day</h2>
+        <p class="chapter__sub">Every story here ends the same way: with your own keys.</p>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing" id="ready">
+      <div class="closing__media"><video src="assets/video/52451.mp4" poster="assets/img/v52451.jpg" muted loop playsinline preload="none"></video></div>
+      <div class="closing__floats" aria-hidden="true">
+        <figure class="cf cf--1" data-speed="-18"><img src="assets/photo/p1.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="cf cf--2" data-speed="14"><video src="assets/video/24453.mp4" poster="assets/img/v24453.jpg" muted loop playsinline preload="none"></video></figure>
+        <figure class="cf cf--3" data-speed="-10"><img src="assets/photo/p10.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="cf cf--4" data-speed="22"><img src="assets/photo/p12.jpg" alt="" loading="lazy" decoding="async"></figure>
+      </div>
+      <div class="closing__inner">
+        <p class="eyebrow">Ready when you are</p>
+        <h2 class="closing__title">Your licence<br><em>starts here.</em></h2>
+        <a class="btn btn--signal btn--xl" href="#book" data-magnetic><span>Book your first lesson</span></a>
+        <p class="closing__note">First lesson $39 · No contract · Cancel any time</p>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="book" id="book">
+      <div class="book__copy">
+        <p class="eyebrow">Book online</p>
+        <h2 class="h2">Your first lesson<br><em>is $39.</em></h2>
+        <p class="book__lede">Pick a package, a day and a time. We text you to confirm, usually within the hour.</p>
+        <ul class="book__perks"><li>Pick-up from your door</li><li>Free changes up to 24 h before</li><li>No contract, cancel any time</li></ul>
+      </div>
+      <form class="booker" id="booker" novalidate>
+        <div class="booker__step">
+          <p class="booker__label"><span>01</span> Package</p>
+          <div class="chips" data-group="pack">
+            <button type="button" class="chip" data-v="Starter">Starter<small>$249</small></button>
+            <button type="button" class="chip is-on" data-v="Confident">Confident<small>$590</small></button>
+            <button type="button" class="chip" data-v="Test-ready">Test-ready<small>$890</small></button>
+          </div>
+        </div>
+        <div class="booker__step">
+          <p class="booker__label"><span>02</span> Day</p>
+          <div class="chips chips--days" data-group="day" id="days"></div>
+        </div>
+        <div class="booker__step">
+          <p class="booker__label"><span>03</span> Time</p>
+          <div class="chips" data-group="time">
+            <button type="button" class="chip" data-v="08:00">08:00</button>
+            <button type="button" class="chip" data-v="10:30">10:30</button>
+            <button type="button" class="chip is-on" data-v="13:00">13:00</button>
+            <button type="button" class="chip" data-v="16:30">16:30</button>
+            <button type="button" class="chip" data-v="18:00">18:00</button>
+          </div>
+        </div>
+        <div class="booker__step booker__fields">
+          <label><span>Your name</span><input name="name" autocomplete="name" placeholder="Sofia Martin" required></label>
+          <label><span>Phone</span><input name="phone" type="tel" autocomplete="tel" placeholder="+1 555 0134" required></label>
+        </div>
+        <div class="booker__foot">
+          <p class="booker__sum" id="sum"></p>
+          <button class="btn btn--signal" type="submit" data-magnetic><span>Request lesson</span></button>
+        </div>
+        <p class="booker__demo">Demo only: nothing is sent.</p>
+        <div class="booker__done" aria-live="polite">
+          <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"/><path d="M24 41l11 11 22-24"/></svg>
+          <h3>You're booked in.</h3>
+          <p id="doneText">We'll text you to confirm.</p>
+          <button type="button" class="btn btn--line" id="again"><span>Book another</span></button>
+        </div>
+      </form>
+    </section>
+    <!-- END CREDITS -->
+    <section class="credits" aria-label="Credits">
+      <div class="credits__pin">
+        <div class="credits__roll">
+          <p class="credits__pre">A Northlane Driving School film</p>
+          <h2 class="credits__title">Your <em>First</em> Drive</h2>
+          <dl class="credits__list"><div class="credits__group"><dt>Starring</dt><dd>Helen</dd><dd>Sofia</dd><dd>Marcus</dd><dd>Nina</dd><dd>Jay</dd></div><div class="credits__group"><dt>Instructors</dt><dd>Daniel Okafor</dd><dd>Maria Lindqvist</dd><dd>Walter Brenner</dd><dd>Tom Reyes</dd></div><div class="credits__group"><dt>The car</dt><dd>The yellow one</dd><dd>and 13 of its friends</dd></div><div class="credits__group"><dt>Filmed on location</dt><dd>Harbour Road</dd><dd>The roundabout</dd><dd>That one stop sign</dd></div><div class="credits__group"><dt>Footage</dt><dd>Mixkit</dd></div><div class="credits__group"><dt>Photography</dt><dd>Stocksnap</dd><dd>Rawpixel</dd></div><div class="credits__group"><dt>Directed by</dt><dd>You, from the driver's seat</dd></div></dl>
+          <p class="credits__end">The end.<br><em>Or rather, the start.</em></p>
+          <a class="btn btn--signal" href="#book" data-magnetic><span>Book your first lesson</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__cols">
+      <div><p class="foot__h">Visit</p><p>14 Harbour Road<br>Northlane, NL 2041</p></div>
+      <div><p class="foot__h">Hours</p><p>Mon to Sun<br>07:00 to 21:00</p></div>
+      <div><p class="foot__h">Talk to us</p><p><a href="#book">hello@northlane.demo</a><br>+1 555 0100</p></div>
+      <div><p class="foot__h">Follow</p><p><a href="#top">Instagram</a><br><a href="#top">TikTok</a><br><a href="#top">YouTube</a></p></div>
+    </div>
+    <div class="foot__big">Northlane</div>
+    <div class="foot__row">
+      <p>© 2026 Northlane Driving School. Demo site.</p>
+      <p>Footage: Mixkit (free licence) · Photos: Stocksnap &amp; Rawpixel (CC0)</p>
+      <p><a href="#top">Back to top ↑</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="town.js"></script>
+  <script src="showroom.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
